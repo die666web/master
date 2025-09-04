@@ -1,48 +1,43 @@
-import React from 'react'
+import React, { useState } from 'react'
+import './DisplayInfor.scss'
 
-class DisInfor extends React.Component
+const DisInfor = (props) =>
 {
-    state = {
-        condition : true
+    const {listUser} = props;
+    const [isShowHideListUser, setShowHideListUser] = useState(true);
+
+    const HandleClick = (event) =>
+    {
+        setShowHideListUser(!isShowHideListUser);
     }
 
-    HandleClick = (event) => 
-    {
-        this.setState({
-            condition : !this.state.condition
-        });
-    }
-    render(){
-        // cách dùng desctrcuting array 
-        const { listUser, condition }  = this.props;
-        console.log(this.props);
-        return (
+    return ( 
             //nhiệm vụ dùng để render ra thông tin người dùng ư
-            <div>
+            <div className = 'display-infor'>
                 <div>
-                    <span onClick = {(event) => {this.HandleClick(event)}}>Ẩn</span>
+                    <span onClick={() => HandleClick()}>Show hide list user</span>
                 </div>
-                {this.state.condition &&
-                    <div>
-                {
+                { isShowHideListUser &&
+                    <>
+                    {
                     listUser.map( user => {
                         return (
                             <div
                                 key = {user.id}
                                 className = {+user.age > 18 ? "green" : 'red'}
                             >
-                                Tôi tên là {user.name} và tuổi là {user.age}
+                                <div>ID : {user.id}</div>
+                                <div>Tôi tên là {user.name} và tuổi là {user.age}</div>
                                 <hr />
+                                <button onClick={() => props.HandleDelete(user.id)}>Delete</button>
                             </div>
+                            
                         )
-                    })
+                    })}
+                    </>
                 }
-                    </div>
-                }
-            </div>
-           
+            </div>           
         ) 
-    }
 }
 
 export default DisInfor;
