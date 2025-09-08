@@ -12,7 +12,10 @@ import {
 } from "react-router-dom";
 import User from './components/User/User';
 import Admin from './components/Admin/Admin';
-
+import Home from './components/Home/Home';
+import Login from './components/Setting/Login';
+import Log_out from './components/Setting/Log_out';
+import Profile from './components/Setting/Profile';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>
@@ -23,9 +26,13 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path='/' element = {<App/>}>
+          <Route index element = {<Home/>} />
           <Route path='users' element = {<User/>}/>
           <Route path='admin' element = {<Admin/>}/>
         </Route>
+        <Route path='login' element = {<Login/>}/>
+        <Route path='log-out' element = {<Log_out/>}/>
+        <Route path='profile' element = {<Profile/>}/>
       </Routes>
 
     </BrowserRouter>,

@@ -7,7 +7,8 @@ const Header = () => {
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container>
-        <Navbar.Brand href="#home"> How are you</Navbar.Brand>
+        {/* <Navbar.Brand href="#home"> How are you</Navbar.Brand> */}
+        <NavLink to='/' className='navbar-brand'>I find her</NavLink>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
@@ -16,17 +17,17 @@ const Header = () => {
             <NavLink to="admin" className='nav-link'>Admin</NavLink>
           </Nav>
           <Nav>
-            <NavDropdown title="Setting" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Login</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Log out
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.1">Profile</NavDropdown.Item>
-            </NavDropdown>
+            <button className='btn-login'>Login</button>
+            <button className='btn-logup'>Logout</button>
+            {/* <NavDropdown title="Setting" id="basic-nav-dropdown">
+              <NavLink to = "login" className= "dropdown-item">Login</NavLink>
+              <NavLink to = "log-out" className= "dropdown-item">Log out</NavLink>
+              <NavLink to = "profile" className= "dropdown-item">Profile</NavLink>
+            </NavDropdown> */}
           </Nav>
         </Navbar.Collapse>
       </Container>
-      
+
     </Navbar>
   );
 }
